@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+  --color-farmstay-bg: #F9F6F0;
+  --color-farmstay-dark: #1F2E22;
+  --color-farmstay-green: #3B533E;
+  --color-farmstay-accent: #D4A373;
+}
