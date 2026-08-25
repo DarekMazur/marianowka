@@ -1,23 +1,6 @@
 ---
 import NavListItem from "../atoms/NavListItem.astro";
-const navItems = [
-  {
-    title: "O nas",
-    href: "#about",
-  },
-  {
-    title: "Pokoje",
-    href: "#rooms",
-  },
-  {
-    title: "Atrakcje",
-    href: "#features",
-  },
-  {
-    title: "Kontakt",
-    href: "#contact",
-  }
-]
+import { navItems } from '../../mocks/navigation.ts'
 ---
 
 <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
