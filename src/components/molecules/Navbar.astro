@@ -1,6 +1,30 @@
+---
+const navItems = [
+  {
+    title: "O nas",
+    href: "#about",
+  },
+  {
+    title: "Pokoje",
+    href: "#rooms",
+  },
+  {
+    title: "Atrakcje",
+    href: "#features",
+  },
+  {
+    title: "Kontakt",
+    href: "#contact",
+  }
+]
+---
+
 <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-  <a href="#about" class="hover:text-farmstay-green transition-colors">O nas</a>
-  <a href="#rooms" class="hover:text-farmstay-green transition-colors">Pokoje</a>
-  <a href="#features" class="hover:text-farmstay-green transition-colors">Atrakcje</a>
-  <a href="#contact" class="hover:text-farmstay-green transition-colors">Kontakt</a>
+  {
+    navItems.map((item) => (
+      <a href={item.href} class="hover:text-farmstay-green transition-colors">
+        {item.title}
+      </a>
+    ))
+  }
 </nav>
