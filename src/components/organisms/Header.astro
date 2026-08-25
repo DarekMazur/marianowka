@@ -1,0 +1,15 @@
+---
+import {Image} from "astro:assets";
+import logo from '../../assets/mut_logo.png'
+import PageTitle from "../atoms/PageTitle.astro";
+import Navbar from "../molecules/Navbar.astro";
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-farmstay-bg/90 backdrop-blur-md border-b border-farmstay-dark/10">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <PageTitle />
+    <Navbar />
+
+    <a href="#contact" class="bg-farmstay-green text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-95 transition-all shadow-sm">Zarezerwuj</a>
+  </div>
+</header>
