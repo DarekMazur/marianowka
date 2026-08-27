@@ -1,33 +1,10 @@
-<section id="kontakt" class="bg-farmstay-dark text-white pt-20 pb-12 px-6">
+---
+import ContactInfo from "../molecules/ContactInfo.astro";
+import ContactForm from "../molecules/ContactForm.astro";
+---
+<section id="contact" class="bg-farmstay-dark text-white pt-20 pb-12 px-6">
   <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 mb-16">
-    <div>
-      <h2 class="font-serif text-3xl font-bold mb-4">Porozmawiajmy o Twoim pobycie</h2>
-      <p class="text-gray-300 font-light mb-6">Masz pytania o wolne terminy? Najszybciej odpowiadamy telefonicznie lub bezpośrednio przez wiadomości na Facebooku.</p>
-      <div class="space-y-3 text-sm text-gray-300">
-        <p>📞 Tel: <strong class="text-white">+48 123 456 789</strong></p>
-        <p>✉️ Email: <strong class="text-white">kontakt@lesnaprzystan.pl</strong></p>
-        <p>📍 Lokalizacja: <strong class="text-white">Suwalszczyzna, okolice Sejn / Hańczy</strong></p>
-      </div>
-    </div>
-
-    <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
-      <form name="kontakt" method="POST" data-netlify="true" class="space-y-4">
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Twoje Imię</label>
-          <input type="text" name="name" required class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4A373]" placeholder="Jan Kowalski">
-        </div>
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Twój Adres E-mail</label>
-          <input type="email" name="email" required class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4A373]" placeholder="jan@example.com">
-        </div>
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Wiadomość</label>
-          <textarea name="message" rows="3" required class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4A373]" placeholder="Dzień dobry, interesuje mnie termin..."></textarea>
-        </div>
-        <button type="submit" class="w-full bg-farmstay-green text-white font-medium py-3 rounded-lg hover:bg-opacity-90 transition-all cursor-pointer">
-          Wyślij zapytanie
-        </button>
-      </form>
-    </div>
+    <ContactInfo />
+    <ContactForm />
   </div>
 </section>
