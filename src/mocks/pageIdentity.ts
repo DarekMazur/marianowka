@@ -1,4 +1,5 @@
 export const pageIdentity = {
+	pageName: "Lorem Ipsum",
 	title: "Serce Suwalskiego Parku Krajobrazowego",
 	slogan: "Poczuj ciszę suwalskich jezior i lasów",
 	subSlogan: "Komfortowe domki i pokoje otoczone nietkniętą przyrodą. Miejsce, gdzie czas zwalnia swój bieg.",
