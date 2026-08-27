@@ -1,0 +1,18 @@
+---
+import FeatureIcon from "../atoms/FeatureIcon.astro";
+import FeatureTitle from "../atoms/FeatureTitle.astro";
+import FeatureDescription from "../atoms/FeatureDescription.astro";
+interface Props {
+	title: string;
+	description: string;
+	icon: string;
+}
+
+const {title, description, icon} = Astro.props
+---
+
+<div class="bg-white p-6 rounded-2xl shadow-sm">
+	<FeatureIcon icon={icon} />
+	<FeatureTitle title={title} />
+	<FeatureDescription description={description} />
+</div>

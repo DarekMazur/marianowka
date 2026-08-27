@@ -1,31 +1,20 @@
-<section id="atrakcje" class="py-20 bg-farmstay-green/5 px-6">
+---
+import Feature from "../molecules/Feature.astro";
+import {features, featuresInfo} from "../../mocks/features.ts";
+---
+<section id="features" class="py-20 bg-farmstay-green/5 px-6">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
-      <h2 class="font-serif text-3xl font-bold mb-2">Co znajdziesz na miejscu?</h2>
-      <p class="text-gray-600 font-light">Wszystko, czego potrzeba do prawdziwego relaksu</p>
+      <h2 class="font-serif text-3xl font-bold mb-2">{featuresInfo.header}</h2>
+      <p class="text-gray-600 font-light">{featuresInfo.description}</p>
     </div>
 
     <div class="grid md:grid-cols-4 gap-8 text-center">
-      <div class="bg-white p-6 rounded-2xl shadow-sm">
-        <div class="w-12 h-12 bg-farmstay-green/10 text-farmstay-green rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">⚓</div>
-        <h3 class="font-serif font-bold text-lg mb-2">Prywatny pomost</h3>
-        <p class="text-sm text-gray-600 font-light">Bezpośredni dostęp do czystego jeziora, idealne miejsce na poranną kawę.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-sm">
-        <div class="w-12 h-12 bg-farmstay-green/10 text-farmstay-green rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">🌲</div>
-        <h3 class="font-serif font-bold text-lg mb-2">Grzybobranie</h3>
-        <p class="text-sm text-gray-600 font-light">Rozległe lasy pełne prawdziwek i jagód tuż za progiem gospodarstwa.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-sm">
-        <div class="w-12 h-12 bg-farmstay-green/10 text-farmstay-green rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">🚲</div>
-        <h3 class="font-serif font-bold text-lg mb-2">Rowery i kajaki</h3>
-        <p class="text-sm text-gray-600 font-light">Trasy rowerowe o różnym stopniu trudności i pobliskie rzeki spływowe.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-sm">
-        <div class="w-12 h-12 bg-farmstay-green/10 text-farmstay-green rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">🔥</div>
-        <h3 class="font-serif font-bold text-lg mb-2">Miejsce na ognisko</h3>
-        <p class="text-sm text-gray-600 font-light">Wieczorne biesiady przy ogniu pod jasnym suwalskim niebem.</p>
-      </div>
+      {
+        features.map(feature => {
+          return <Feature title={feature.title} description={feature.description} icon={feature.icon} />
+        })
+      }
     </div>
   </div>
 </section>
