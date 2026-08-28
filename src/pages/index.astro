@@ -1,14 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from "../components/Navbar.astro";
-import Hero from "../components/Hero.astro";
-import Rooms from "../components/Rooms.astro";
-import Footer from "../components/Footer.astro";
+import Hero from "../components/organisms/Hero.astro";
+import Rooms from "../components/organisms/Rooms.astro";
+import Footer from "../components/organisms/Footer.astro";
+import Features from "../components/organisms/Features.astro";
+import Header from "../components/organisms/Header.astro";
+import Contact from "../components/organisms/Contact.astro";
 ---
 
 <Layout>
-	<Navbar />
+	<Header />
 	<Hero />
 	<Rooms />
+	<Features />
+	<Contact />
 	<Footer />
 </Layout>

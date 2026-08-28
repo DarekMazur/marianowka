@@ -1,0 +1,20 @@
+---
+import Feature from "../molecules/Feature.astro";
+import {features, featuresInfo} from "../../mocks/features.ts";
+---
+<section id="features" class="py-20 bg-farmstay-green/5 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="font-serif text-3xl font-bold mb-2">{featuresInfo.header}</h2>
+      <p class="text-gray-600 font-light">{featuresInfo.description}</p>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-8 text-center">
+      {
+        features.map(feature => {
+          return <Feature title={feature.title} description={feature.description} icon={feature.icon} />
+        })
+      }
+    </div>
+  </div>
+</section>

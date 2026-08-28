@@ -1,0 +1,12 @@
+---
+import NavListItem from "../atoms/NavListItem.astro";
+import { navItems } from '../../mocks/navigation.ts'
+---
+
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+  {
+    navItems.map((item) => (
+        <NavListItem href={item.href} title={item.title} />
+    ))
+  }
+</nav>

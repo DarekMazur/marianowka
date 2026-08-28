@@ -1,0 +1,17 @@
+---
+import {rooms} from '../../mocks/rooms.ts'
+import Room from "../molecules/Room.astro";
+---
+
+<section id="pokoje" class="py-20 px-6 max-w-7xl mx-auto">
+  <div class="text-center mb-12">
+    <h2 class="font-serif text-3xl font-bold mb-2">Nasze Pokoje i Domki</h2>
+    <p class="text-gray-600 font-light">Wybierz przestrzeń idealną dla siebie i swojej rodziny</p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-8">
+		{rooms.map(room => (
+      <Room tag={room.tag} image={room.image} desc={room.tag} price={room.price} title={room.title} />
+		))}
+  </div>
+</section>

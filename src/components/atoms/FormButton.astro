@@ -1,0 +1,11 @@
+---
+interface Props {
+	buttonMessage: string,
+}
+
+const {buttonMessage} = Astro.props
+---
+
+<button type="submit" class="w-full bg-farmstay-green text-white font-medium py-3 rounded-lg hover:bg-opacity-90 transition-all cursor-pointer">
+	{buttonMessage}
+</button>

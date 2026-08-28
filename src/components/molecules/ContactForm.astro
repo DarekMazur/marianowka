@@ -1,0 +1,13 @@
+---
+import FormButton from "../atoms/FormButton.astro";
+import FormInput from "../atoms/FormInput.astro";
+---
+
+<div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+  <form name="contact" method="POST" data-netlify="true" class="space-y-4">
+    <FormInput name="name" label="Twoje Imię" placeholder="Jan Kowalski" />
+    <FormInput label="Twój Adres E-mail" name="email" placeholder="jan@example.com" />
+    <FormInput name="message" label="Wiadomość" placeholder="Dzień dobry, interesuje mnie termin..." tag="textarea" />
+    <FormButton buttonMessage="Wyślij zapytanie" />
+  </form>
+</div>

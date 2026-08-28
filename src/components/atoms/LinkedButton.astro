@@ -1,0 +1,15 @@
+---
+interface Props {
+	href: string,
+	title: string,
+	px?: number | string,
+	py?: number | string,
+	size?: string,
+	isTransparent?: boolean,
+}
+const {href, title, px = "px-5", py = "py-2.5", size, isTransparent = false} = Astro.props
+---
+
+<a {href} class:list={["text-white rounded-full font-medium transition-all shadow-sm", px, py, size, isTransparent
+	? "border border-white/80 hover:bg-white/10"
+	: "bg-farmstay-green hover:bg-opacity-95 text-white" ]}>{title}</a>
