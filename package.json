@@ -16,7 +16,8 @@
     "typecheck": "astro check",
     "prepare": "husky",
     "test:unit": "vitest run --passWithNoTests",
-    "test:unit:watch": "vitest"
+    "test:unit:watch": "vitest",
+    "test:e2e": "playwright test --pass-with-no-tests"
   },
   "lint-staged": {
     "*.{js,ts,mjs,astro}": [
@@ -39,6 +40,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.0",
     "@typescript/typescript6": "^6.0.2",
     "eslint": "^10.9.1",
     "eslint-plugin-astro": "^3.1.0",
