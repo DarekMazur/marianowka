@@ -19,6 +19,7 @@ pnpm-debug.log*
 
 #tests
 test-results/
+.last-run.json
 
 # macOS-specific files
 .DS_Store
