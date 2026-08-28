@@ -16,6 +16,15 @@
     "typecheck": "astro check",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "*.{js,ts,mjs,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@astrojs/react": "^6.0.4",
     "@tailwindcss/vite": "^4.3.3",
