@@ -1,13 +1,31 @@
 ---
 import FormButton from "../atoms/FormButton.astro";
 import FormInput from "../atoms/FormInput.astro";
+
+const randomBotFieldName = `${Math.random().toString(36).substring(2, 8)}_${Date.now().toString()}`;
 ---
 
 <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
-  <form name="contact" method="POST" data-netlify="true" class="space-y-4">
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot={randomBotFieldName} class="space-y-4" id="contact-form">
+    <p class="absolute -left-[9999vw]">
+      <label>Lorem ipsum dolor sit amet<input name={randomBotFieldName} /></label>
+    </p>
     <FormInput name="name" label="Twoje Imię" placeholder="Jan Kowalski" />
-    <FormInput label="Twój Adres E-mail" name="email" placeholder="jan@example.com" />
+    <FormInput label="Twój Adres E-mail" name="email" type="email" placeholder="jan@example.com" />
     <FormInput name="message" label="Wiadomość" placeholder="Dzień dobry, interesuje mnie termin..." tag="textarea" />
-    <FormButton buttonMessage="Wyślij zapytanie" />
+
+    <div id="consent-wrapper">
+      <FormInput label="Akceptuję politykę prywatności" name="consent" type="checkbox" id="consent-checkbox" />
+    </div>
+
+    <div id="submit-wrapper">
+      <FormButton buttonMessage="Wyślij zapytanie" id="submit-btn" disabled />
+    </div>
   </form>
 </div>
+
+<script>
+  import { initContactForm } from '../../lib/contact-form.ts';
+
+  initContactForm();
+</script>
