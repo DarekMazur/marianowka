@@ -14,6 +14,6 @@ const Element = tag
 ---
 
 <div>
-  <label for={name} class="block text-xs uppercase tracking-wider text-gray-400 mb-1">{label}</label>
-  <Element type={type} id={id} name={name} required style={type !== "checkbox" ? "width: 100%" : ""} class="bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4A373]" placeholder={placeholder} />
+  <label for={`form_${id}`} class="block text-xs uppercase tracking-wider text-gray-400 mb-1">{label}</label>
+  <Element type={type} id={`form_${id}`} name={name} required style={type !== "checkbox" ? "width: 100%" : ""} class="bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4A373]" placeholder={placeholder} />
 </div>
