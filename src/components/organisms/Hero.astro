@@ -1,7 +1,7 @@
 ---
-import {pageIdentity} from "../../mocks/pageIdentity.ts";
-import MainActions from "../molecules/MainActions.astro";
-import HeroTitle from "../molecules/HeroTitle.astro";
+import { pageIdentityData } from '../../mocks/pageIdentity.ts';
+import MainActions from '../molecules/MainActions.astro';
+import HeroTitle from '../molecules/HeroTitle.astro';
 
 interface IPageIdentity {
   title: string;
@@ -10,12 +10,24 @@ interface IPageIdentity {
   subSlogan?: string;
 }
 
-const {title, slogan, subSlogan, heroImage} = pageIdentity as IPageIdentity;
+const { lang = 'pl' } = Astro.props;
+const currentIdentity = pageIdentityData[lang] || pageIdentityData.pl;
+
+const { title, slogan, subSlogan, heroImage } = currentIdentity as IPageIdentity;
 ---
 
-<section class="relative h-screen flex items-center justify-center text-center px-6 pt-20 bg-gray-900 overflow-hidden">
-  <div class="absolute inset-0 opacity-40 bg-cover bg-center" style={`background-image: url('${heroImage}');`}></div>
-  <div class="absolute inset-0 bg-gradient-to-t from-farmstay-dark/80 via-farmstay-dark/30 to-transparent"></div>
+<section
+  class="relative h-screen flex items-center justify-center text-center px-6 pt-20 bg-gray-900 overflow-hidden"
+>
+  <div
+    class="absolute inset-0 opacity-40 bg-cover bg-center"
+    style={`background-image: url('${heroImage}');`}
+  >
+  </div>
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-farmstay-dark/80 via-farmstay-dark/30 to-transparent"
+  >
+  </div>
 
   <div class="relative z-10 max-w-3xl mx-auto text-white">
     <HeroTitle title={title} slogan={slogan} subSlogan={subSlogan} />

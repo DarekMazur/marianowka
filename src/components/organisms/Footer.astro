@@ -1,10 +1,13 @@
 ---
-import {getFullYear} from "../../lib/getFullYear.ts";
-import {pageIdentity} from "../../mocks/pageIdentity.ts";
+import { getFullYear } from '../../lib/getFullYear.ts';
+import { pageIdentityData } from '../../mocks/pageIdentity.ts';
 ---
+
 <footer class="bg-farmstay-dark text-white pb-12 px-6">
-  <div class="max-w-7xl mx-auto pt-8 border-t border-white/10 text-center text-xs text-gray-400 font-light flex flex-col sm:flex-row justify-between items-center gap-4">
-    <p>&copy; {getFullYear()} {pageIdentity.pageName}</p>
-		<p>Created by <a class="font-bold hover:cursor-pointer">Author</a></p>
+  <div
+    class="max-w-7xl mx-auto pt-8 border-t border-white/10 text-center text-xs text-gray-400 font-light flex flex-col sm:flex-row justify-between items-center gap-4"
+  >
+    <p>&copy; {getFullYear()} {pageIdentityData.pageName}</p>
+    <p>Created by <a class="font-bold hover:cursor-pointer">Author</a></p>
   </div>
 </footer>
