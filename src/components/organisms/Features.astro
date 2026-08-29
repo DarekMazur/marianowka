@@ -1,18 +1,24 @@
 ---
-import Feature from "../molecules/Feature.astro";
-import {features, featuresInfo} from "../../mocks/features.ts";
+import Feature from '../molecules/Feature.astro';
+import { featuresData } from '../../mocks/features.ts';
+
+const { lang = 'pl' } = Astro.props;
+const currentFeatures = featuresData[lang] || featuresData.pl;
 ---
+
 <section id="features" class="py-20 bg-farmstay-green/5 px-6">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
-      <h2 class="font-serif text-3xl font-bold mb-2">{featuresInfo.header}</h2>
-      <p class="text-gray-600 font-light">{featuresInfo.description}</p>
+      <h2 class="font-serif text-3xl font-bold mb-2">{currentFeatures.header}</h2>
+      <p class="text-gray-600 font-light">{currentFeatures.description}</p>
     </div>
 
     <div class="grid md:grid-cols-4 gap-8 text-center">
       {
-        features.map(feature => {
-          return <Feature title={feature.title} description={feature.description} icon={feature.icon} />
+        currentFeatures.items.map((feature) => {
+          return (
+            <Feature title={feature.title} description={feature.description} icon={feature.icon} />
+          );
         })
       }
     </div>
