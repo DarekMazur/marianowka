@@ -17,10 +17,11 @@ const t = useTranslations(lang);
   class="fixed top-0 left-0 right-0 z-50 bg-farmstay-bg/90 backdrop-blur-md border-b border-farmstay-dark/10"
 >
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-    <PageTitle />
+    <PageTitle lang={lang} />
+
     <Navbar lang={lang} />
 
-    <div class="flex items-center gap-4">
+    <div class="hidden md:flex items-center gap-4">
       <LanguagePicker lang={lang} />
       <LinkedButton href="#contact" title={t('nav.bookNow')} size="text-sm" />
     </div>

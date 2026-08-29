@@ -15,6 +15,7 @@ export const ui = {
     'nav.pricing': 'Cennik',
     'nav.contact': 'Kontakt',
     'nav.bookNow': 'Zarezerwuj',
+    'nav.language': 'Język',
 
     'hero.title': 'Witaj w Marianówce',
     'hero.subtitle': 'Twój azyl spokoju i natury w sercu gór',
@@ -55,6 +56,7 @@ export const ui = {
     'nav.pricing': 'Pricing',
     'nav.contact': 'Contact',
     'nav.bookNow': 'Book Now',
+    'nav.language': 'Language',
 
     'hero.title': 'Welcome to Marianówka',
     'hero.subtitle': 'Your sanctuary of peace and nature in the heart of the mountains',
@@ -95,6 +97,7 @@ export const ui = {
     'nav.pricing': 'Цены',
     'nav.contact': 'Контакты',
     'nav.bookNow': 'Забронировать',
+    'nav.language': 'Язык',
 
     'hero.title': 'Добро пожаловать в Маряновку',
     'hero.subtitle': 'Ваш островок уединения и природы в сердце гор',
