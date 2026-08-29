@@ -3,8 +3,14 @@ import PageTitle from '../atoms/PageTitle.astro';
 import Navbar from '../molecules/Navbar.astro';
 import LinkedButton from '../atoms/LinkedButton.astro';
 import LanguagePicker from '../atoms/LanguagePicker.astro';
+import { useTranslations } from '../../i18n/utils.ts';
+
+interface Props {
+  lang?: 'pl' | 'en' | 'ru';
+}
 
 const { lang = 'pl' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <header
@@ -16,7 +22,7 @@ const { lang = 'pl' } = Astro.props;
 
     <div class="flex items-center gap-4">
       <LanguagePicker lang={lang} />
-      <LinkedButton href="#contact" title="Zarezerwuj" size="text-sm" />
+      <LinkedButton href="#contact" title={t('nav.bookNow')} size="text-sm" />
     </div>
   </div>
 </header>

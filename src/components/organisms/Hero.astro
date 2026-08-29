@@ -18,6 +18,7 @@ const { title, slogan, subSlogan, heroImage } = currentIdentity as IPageIdentity
 
 <section
   class="relative h-screen flex items-center justify-center text-center px-6 pt-20 bg-gray-900 overflow-hidden"
+  id="about"
 >
   <div
     class="absolute inset-0 opacity-40 bg-cover bg-center"
@@ -31,6 +32,6 @@ const { title, slogan, subSlogan, heroImage } = currentIdentity as IPageIdentity
 
   <div class="relative z-10 max-w-3xl mx-auto text-white">
     <HeroTitle title={title} slogan={slogan} subSlogan={subSlogan} />
-    <MainActions />
+    <MainActions lang={lang} />
   </div>
 </section>

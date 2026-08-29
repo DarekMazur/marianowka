@@ -1,38 +1,22 @@
 ---
 import '../styles/global.css';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang?: 'pl' | 'en' | 'ru';
+}
+
+const { lang = 'pl' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="pl">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Lorem Ipsum</title>
-
-    <script is:inline>
-      (function () {
-        const savedLang = localStorage.getItem('user-language');
-
-        const browserLang = navigator.language || navigator.userLanguage;
-        const lang = savedLang || browserLang.toLowerCase();
-
-        let targetPrefix = '/en/';
-
-        if (lang.startsWith('pl')) {
-          targetPrefix = '/pl/';
-        } else if (lang.startsWith('en')) {
-          targetPrefix = '/en/';
-        } else if (lang.startsWith('ru')) {
-          targetPrefix = '/ru/';
-        }
-
-        if (targetPrefix !== '/' && window.location.pathname === '/') {
-          localStorage.setItem('user-language', lang);
-          window.location.replace(targetPrefix);
-        }
-      })();
-    </script>
+    <title>{t('site.title')}</title>
   </head>
   <body>
     <slot />

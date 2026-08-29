@@ -1,10 +1,17 @@
 ---
-import ContactInfo from "../molecules/ContactInfo.astro";
-import ContactForm from "../molecules/ContactForm.astro";
+import ContactInfo from '../molecules/ContactInfo.astro';
+import ContactForm from '../molecules/ContactForm.astro';
+
+interface Props {
+  lang: 'pl' | 'en' | 'ru';
+}
+
+const { lang } = Astro.props;
 ---
+
 <section id="contact" class="bg-farmstay-dark text-white pt-20 pb-12 px-6">
   <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 mb-16">
-    <ContactInfo />
-    <ContactForm />
+    <ContactInfo lang={lang} />
+    <ContactForm lang={lang} />
   </div>
 </section>

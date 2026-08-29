@@ -1,15 +1,21 @@
 ---
 import { roomsData } from '../../mocks/rooms.ts';
 import Room from '../molecules/Room.astro';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang?: 'pl' | 'en' | 'ru';
+}
 
 const { lang = 'pl' } = Astro.props;
+const t = useTranslations(lang);
 const currentRooms = roomsData[lang] || roomsData.pl;
 ---
 
-<section id="pokoje" class="py-20 px-6 max-w-7xl mx-auto">
+<section id="rooms" class="py-20 px-6 max-w-7xl mx-auto">
   <div class="text-center mb-12">
-    <h2 class="font-serif text-3xl font-bold mb-2">Nasze Pokoje i Domki</h2>
-    <p class="text-gray-600 font-light">Wybierz przestrzeń idealną dla siebie i swojej rodziny</p>
+    <h2 class="font-serif text-3xl font-bold mb-2">{t('rooms.sectionTitle')}</h2>
+    <p class="text-gray-600 font-light">{t('rooms.sectionDesc')}</p>
   </div>
 
   <div class="grid md:grid-cols-3 gap-8">
@@ -21,6 +27,7 @@ const currentRooms = roomsData[lang] || roomsData.pl;
           desc={room.tag}
           price={room.price}
           title={room.title}
+          lang={lang}
         />
       ))
     }
