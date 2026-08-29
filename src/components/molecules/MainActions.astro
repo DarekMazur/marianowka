@@ -1,7 +1,16 @@
 ---
-import LinkedButton from "../atoms/LinkedButton.astro";
+import LinkedButton from '../atoms/LinkedButton.astro';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: 'pl' | 'en' | 'ru';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
+
 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-  <LinkedButton title="Zobacz oferty pokoi" href="#rooms" px="px-8" py="py-3.5" />
-  <LinkedButton title="Zadzwoń do nas" href="#contact" px="px-8" py="py-3.5" isTransparent />
+  <LinkedButton title={t('actions.rooms')} href="#rooms" px="px-8" py="py-3.5" />
+  <LinkedButton title={t('actions.call')} href="#contact" px="px-8" py="py-3.5" isTransparent />
 </div>

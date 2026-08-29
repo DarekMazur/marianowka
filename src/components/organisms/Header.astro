@@ -1,14 +1,28 @@
 ---
-import PageTitle from "../atoms/PageTitle.astro";
-import Navbar from "../molecules/Navbar.astro";
-import LinkedButton from "../atoms/LinkedButton.astro";
+import PageTitle from '../atoms/PageTitle.astro';
+import Navbar from '../molecules/Navbar.astro';
+import LinkedButton from '../atoms/LinkedButton.astro';
+import LanguagePicker from '../atoms/LanguagePicker.astro';
+import { useTranslations } from '../../i18n/utils.ts';
+
+interface Props {
+  lang?: 'pl' | 'en' | 'ru';
+}
+
+const { lang = 'pl' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-farmstay-bg/90 backdrop-blur-md border-b border-farmstay-dark/10">
+<header
+  class="fixed top-0 left-0 right-0 z-50 bg-farmstay-bg/90 backdrop-blur-md border-b border-farmstay-dark/10"
+>
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     <PageTitle />
-    <Navbar />
+    <Navbar lang={lang} />
 
-    <LinkedButton href="#contact" title="Zarezerwuj" size="text-sm" />
+    <div class="flex items-center gap-4">
+      <LanguagePicker lang={lang} />
+      <LinkedButton href="#contact" title={t('nav.bookNow')} size="text-sm" />
+    </div>
   </div>
 </header>

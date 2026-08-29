@@ -1,0 +1,38 @@
+---
+const { lang = 'pl' } = Astro.props;
+
+const languages = [
+  { code: 'pl', label: 'PL' },
+  { code: 'en', label: 'EN' },
+  { code: 'ru', label: 'RU' },
+];
+---
+
+<div class="flex items-center gap-2">
+  {
+    languages.map((l) => (
+      <a
+        href={`/${l.code}/`}
+        data-lang-code={l.code}
+        class={`px-2.5 py-1 text-xs font-semibold rounded-md transition-colors ${
+          lang === l.code
+            ? 'bg-farmstay-dark text-white'
+            : 'bg-farmstay-dark/5 text-farmstay-dark hover:bg-farmstay-dark/10'
+        }`}
+      >
+        {l.label}
+      </a>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll('[data-lang-code]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const selectedLang = (e.currentTarget as HTMLElement).getAttribute('data-lang-code');
+      if (selectedLang) {
+        localStorage.setItem('user-language', selectedLang);
+      }
+    });
+  });
+</script>

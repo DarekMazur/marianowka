@@ -1,20 +1,29 @@
 ---
-import {farmstayData} from "../../mocks/farmstayData.ts";
+import { farmstayData } from '../../mocks/farmstayData.ts';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: 'pl' | 'en' | 'ru';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
 interface IContactInfo {
-	phone: string | number,
-	email: string;
-	address: string;
+  phone: string | number;
+  email: string;
+  address: string;
 }
 
 const { phone, email, address } = farmstayData as IContactInfo;
 ---
 
 <div>
-  <h2 class="font-serif text-3xl font-bold mb-4">Porozmawiajmy o Twoim pobycie</h2>
-  <p class="text-gray-300 font-light mb-6">Masz pytania o wolne terminy? Najszybciej odpowiadamy telefonicznie lub bezpośrednio przez wiadomości na Facebooku.</p>
+  <h2 class="font-serif text-3xl font-bold mb-4">{t('contact.heading')}</h2>
+  <p class="text-gray-300 font-light mb-6">{t('contact.desc')}</p>
   <div class="space-y-3 text-sm text-gray-300">
-    <p>📞 Tel: <strong class="text-white">{phone}</strong></p>
-    <p>✉️ Email: <strong class="text-white">{email}</strong></p>
-    <p>📍 Lokalizacja: <strong class="text-white">{address}</strong></p>
+    <p>📞 {t('contact.phone')}: <strong class="text-white">{phone}</strong></p>
+    <p>✉️ {t('contact.email')}: <strong class="text-white">{email}</strong></p>
+    <p>📍 {t('contact.address')}: <strong class="text-white">{address}</strong></p>
   </div>
 </div>

@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/organisms/Hero.astro';
+import Rooms from '../../components/organisms/Rooms.astro';
+import Footer from '../../components/organisms/Footer.astro';
+import Features from '../../components/organisms/Features.astro';
+import Header from '../../components/organisms/Header.astro';
+import Contact from '../../components/organisms/Contact.astro';
+
+export async function getStaticPaths() {
+  return [{ params: { lang: 'pl' } }, { params: { lang: 'en' } }, { params: { lang: 'ru' } }];
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang || 'pl').substring(0, 2);
+---
+
+<Layout>
+  <Header lang={currentLang} />
+  <Hero lang={currentLang} />
+  <Rooms lang={currentLang} />
+  <Features lang={currentLang} />
+  <Contact lang={currentLang} />
+  <Footer lang={currentLang} />
+</Layout>

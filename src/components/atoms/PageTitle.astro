@@ -1,6 +1,10 @@
 ---
 import logo from '../../assets/mut_logo.png';
 import { Image } from 'astro:assets';
+import { pageIdentityData } from '../../mocks/pageIdentity.ts';
+
+const { lang = 'pl' } = Astro.props;
+const currentIdentity = pageIdentityData[lang] || pageIdentityData.pl;
 ---
 
 <a href="/" class="flex items-center gap-3 group">
@@ -11,5 +15,7 @@ import { Image } from 'astro:assets';
     height={1000}
     class="w-20 h-20 object-contain transition-transform group-hover:scale-105"
   />
-  <span class="font-serif text-2xl font-bold tracking-tight text-farmstay-dark">Lorem Ipsum</span>
+  <span class="font-serif text-2xl font-bold tracking-tight text-farmstay-dark"
+    >{currentIdentity.pageName}</span
+  >
 </a>

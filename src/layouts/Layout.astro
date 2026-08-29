@@ -1,16 +1,24 @@
 ---
 import '../styles/global.css';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang?: 'pl' | 'en' | 'ru';
+}
+
+const { lang = 'pl' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="pl">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Lorem Ipsum</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{t('site.title')}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
