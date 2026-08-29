@@ -1,12 +1,12 @@
 ---
-import NavListItem from "../atoms/NavListItem.astro";
-import { navItems } from '../../mocks/navigation.ts'
+import NavListItem from '../atoms/NavListItem.astro';
+import { navData } from '../../mocks/navigation.ts';
+
+const { lang = 'pl' } = Astro.props;
+
+const currentNav = navData[lang] || navData.pl;
 ---
 
 <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-  {
-    navItems.map((item) => (
-        <NavListItem href={item.href} title={item.title} />
-    ))
-  }
+  {currentNav.map((item) => <NavListItem href={item.href} title={item.title} />)}
 </nav>

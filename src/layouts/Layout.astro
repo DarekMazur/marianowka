@@ -4,13 +4,37 @@ import '../styles/global.css';
 
 <!doctype html>
 <html lang="pl">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Lorem Ipsum</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Lorem Ipsum</title>
+
+    <script is:inline>
+      (function () {
+        const savedLang = localStorage.getItem('user-language');
+
+        const browserLang = navigator.language || navigator.userLanguage;
+        const lang = savedLang || browserLang.toLowerCase();
+
+        let targetPrefix = '/en/';
+
+        if (lang.startsWith('pl')) {
+          targetPrefix = '/pl/';
+        } else if (lang.startsWith('en')) {
+          targetPrefix = '/en/';
+        } else if (lang.startsWith('ru')) {
+          targetPrefix = '/ru/';
+        }
+
+        if (targetPrefix !== '/' && window.location.pathname === '/') {
+          localStorage.setItem('user-language', lang);
+          window.location.replace(targetPrefix);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
