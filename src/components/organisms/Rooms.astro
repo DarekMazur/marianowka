@@ -1,6 +1,9 @@
 ---
-import {rooms} from '../../mocks/rooms.ts'
-import Room from "../molecules/Room.astro";
+import { roomsData } from '../../mocks/rooms.ts';
+import Room from '../molecules/Room.astro';
+
+const { lang = 'pl' } = Astro.props;
+const currentRooms = roomsData[lang] || roomsData.pl;
 ---
 
 <section id="pokoje" class="py-20 px-6 max-w-7xl mx-auto">
@@ -10,8 +13,16 @@ import Room from "../molecules/Room.astro";
   </div>
 
   <div class="grid md:grid-cols-3 gap-8">
-		{rooms.map(room => (
-      <Room tag={room.tag} image={room.image} desc={room.tag} price={room.price} title={room.title} />
-		))}
+    {
+      currentRooms.map((room) => (
+        <Room
+          tag={room.tag}
+          image={room.image}
+          desc={room.tag}
+          price={room.price}
+          title={room.title}
+        />
+      ))
+    }
   </div>
 </section>
