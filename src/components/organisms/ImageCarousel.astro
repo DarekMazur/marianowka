@@ -1,6 +1,7 @@
 ---
 import CarouselButton from '../atoms/CarouselButton.astro';
 import CarouselIndicator from '../atoms/CarouselIndicator.astro';
+import CarouselToggle from '../atoms/CarouselToggle.astro';
 interface Slide {
   image: string;
   alt: string;
@@ -76,19 +77,7 @@ const {
 
     <div class="h-4 w-px bg-farmstay-bg/20"></div>
 
-    <button
-      type="button"
-      class="flex h-7 w-7 items-center justify-center text-farmstay-bg transition-colors hover:text-farmstay-accent focus:outline-none"
-      data-carousel-toggle
-      aria-label="Wstrzymaj lub uruchom karuzelę"
-    >
-      <svg class="h-4 w-4 pause-icon" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
-      </svg>
-      <svg class="h-4 w-4 play-icon hidden" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M8 5v14l11-7z"></path>
-      </svg>
-    </button>
+    <CarouselToggle />
   </div>
 </div>
 
