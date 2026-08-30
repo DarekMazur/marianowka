@@ -6,7 +6,7 @@ export default defineConfig(
   getViteConfig({
     test: {
       globals: true,
-      environment: 'node',
+      environment: 'jsdom',
     },
   })
 );
