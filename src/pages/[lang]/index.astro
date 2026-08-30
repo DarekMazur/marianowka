@@ -6,6 +6,9 @@ import Footer from '../../components/organisms/Footer.astro';
 import Features from '../../components/organisms/Features.astro';
 import Header from '../../components/organisms/Header.astro';
 import Contact from '../../components/organisms/Contact.astro';
+import ImageCarousel from '../../components/organisms/ImageCarousel.astro';
+
+import { homeSlides } from '../../mocks/homeSlides.ts';
 
 export async function getStaticPaths() {
   return [{ params: { lang: 'pl' } }, { params: { lang: 'en' } }, { params: { lang: 'ru' } }];
@@ -18,6 +21,7 @@ const currentLang = (lang || 'pl').substring(0, 2);
 <Layout>
   <Header lang={currentLang} />
   <Hero lang={currentLang} />
+  <ImageCarousel slides={homeSlides} autoplayInterval={4000} />
   <Rooms lang={currentLang} />
   <Features lang={currentLang} />
   <Contact lang={currentLang} />
