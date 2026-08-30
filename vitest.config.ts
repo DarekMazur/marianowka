@@ -6,7 +6,8 @@ export default defineConfig(
   getViteConfig({
     test: {
       globals: true,
-      environment: 'node',
+      environment: 'jsdom',
+      exclude: ['**/node_modules/**', '**/dist/**', '**/e2e/**'],
     },
   })
 );
