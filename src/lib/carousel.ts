@@ -3,6 +3,9 @@ export const carousel = () => {
     const carousels = document.querySelectorAll('[data-carousel]');
 
     carousels.forEach((carousel) => {
+      if (carousel.hasAttribute('data-carousel-initialized')) return;
+      carousel.setAttribute('data-carousel-initialized', 'true');
+
       const slides = carousel.querySelectorAll('[data-slide]');
       const indicators = carousel.querySelectorAll('[data-slide-to]');
       const btnPrev = carousel.querySelector('[data-carousel-prev]');
@@ -13,11 +16,21 @@ export const carousel = () => {
 
       const intervalTime = parseInt(carousel.getAttribute('data-interval') || '5000', 10);
 
-      let currentIndex = 0;
       let slideInterval: number | null = null;
       let isPlaying = true;
 
+      // Pomocnicza funkcja pobierająca aktualny index bezpośrednio z DOM
+      const getCurrentIndex = () => {
+        return Array.from(slides).findIndex((slide) => slide.classList.contains('opacity-100'));
+      };
+
       const updateCarousel = (newIndex: number) => {
+        if (!slides.length) return;
+
+        const currentIndex = getCurrentIndex();
+        if (currentIndex === newIndex) return;
+
+        // Ukryj stary slajd
         slides[currentIndex].classList.remove('opacity-100', 'z-10');
         slides[currentIndex].classList.add('opacity-0', 'z-0');
 
@@ -26,36 +39,39 @@ export const carousel = () => {
           indicators[currentIndex].classList.add('bg-farmstay-bg/50');
         }
 
-        currentIndex = (newIndex + slides.length) % slides.length;
+        // Pokaż nowy slajd
+        const targetIndex = (newIndex + slides.length) % slides.length;
 
-        slides[currentIndex].classList.remove('opacity-0', 'z-0');
-        slides[currentIndex].classList.add('opacity-100', 'z-10');
+        slides[targetIndex].classList.remove('opacity-0', 'z-0');
+        slides[targetIndex].classList.add('opacity-100', 'z-10');
 
-        if (indicators[currentIndex]) {
-          indicators[currentIndex].classList.remove('bg-farmstay-bg/50');
-          indicators[currentIndex].classList.add('bg-farmstay-accent', 'w-6');
+        if (indicators[targetIndex]) {
+          indicators[targetIndex].classList.remove('bg-farmstay-bg/50');
+          indicators[targetIndex].classList.add('bg-farmstay-accent', 'w-6');
         }
       };
 
       const nextSlide = () => {
+        const currentIndex = getCurrentIndex();
         updateCarousel(currentIndex + 1);
       };
 
       const prevSlide = () => {
+        const currentIndex = getCurrentIndex();
         updateCarousel(currentIndex - 1);
       };
 
       const startAutoplay = () => {
-        if (!slideInterval) {
-          slideInterval = window.setInterval(nextSlide, intervalTime);
-          isPlaying = true;
-          pauseIcon?.classList.remove('hidden');
-          playIcon?.classList.add('hidden');
-        }
+        if (slideInterval !== null) return;
+
+        slideInterval = window.setInterval(nextSlide, intervalTime);
+        isPlaying = true;
+        pauseIcon?.classList.remove('hidden');
+        playIcon?.classList.add('hidden');
       };
 
       const stopAutoplay = () => {
-        if (slideInterval) {
+        if (slideInterval !== null) {
           clearInterval(slideInterval);
           slideInterval = null;
         }
@@ -99,14 +115,14 @@ export const carousel = () => {
       });
 
       carousel.addEventListener('mouseenter', () => {
-        if (isPlaying && slideInterval) {
+        if (isPlaying && slideInterval !== null) {
           clearInterval(slideInterval);
           slideInterval = null;
         }
       });
 
       carousel.addEventListener('mouseleave', () => {
-        if (isPlaying && !slideInterval) {
+        if (isPlaying && slideInterval === null) {
           slideInterval = window.setInterval(nextSlide, intervalTime);
         }
       });
@@ -116,5 +132,4 @@ export const carousel = () => {
   };
 
   setupCarousels();
-  document.addEventListener('astro:page-load', setupCarousels);
 };
