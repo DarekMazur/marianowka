@@ -17,6 +17,11 @@ export const ui = {
     'nav.bookNow': 'Zarezerwuj',
     'nav.language': 'Język',
 
+    'carousel.button.prev': 'Poprzedni slajd',
+    'carousel.button.next': 'Następny slajd',
+    'carousel.indicator': 'Przejdź do slajdu',
+    'carousel.toggle': 'Wstrzymaj lub uruchom karuzelę',
+
     'hero.title': 'Witaj w Marianówce',
     'hero.subtitle': 'Twój azyl spokoju i natury w sercu gór',
     'hero.cta': 'Sprawdź dostępność',
@@ -58,6 +63,11 @@ export const ui = {
     'nav.bookNow': 'Book Now',
     'nav.language': 'Language',
 
+    'carousel.button.prev': 'Previous slide',
+    'carousel.button.next': 'Next slide',
+    'carousel.indicator': 'Go to slide',
+    'carousel.toggle': 'Pause or play carousel',
+
     'hero.title': 'Welcome to Marianówka',
     'hero.subtitle': 'Your sanctuary of peace and nature in the heart of the mountains',
     'hero.cta': 'Check Availability',
@@ -98,6 +108,11 @@ export const ui = {
     'nav.contact': 'Контакты',
     'nav.bookNow': 'Забронировать',
     'nav.language': 'Язык',
+
+    'carousel.button.prev': 'Предыдущий слайд',
+    'carousel.button.next': 'Следующий слайд',
+    'carousel.indicator': 'Перейти к слайду',
+    'carousel.toggle': 'Приостановить или запустить карусель',
 
     'hero.title': 'Добро пожаловать в Маряновку',
     'hero.subtitle': 'Ваш островок уединения и природы в сердце гор',

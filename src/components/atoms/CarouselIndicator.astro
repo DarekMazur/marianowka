@@ -1,0 +1,17 @@
+---
+import { useTranslations } from '../../i18n/utils';
+interface Props {
+  index: number;
+  isActive?: boolean;
+  lang?: 'pl' | 'en' | 'ru';
+}
+
+const { index, isActive = false, lang = 'pl' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<button
+  type="button"
+  class={`h-2.5 w-2.5 rounded-full transition-all ${isActive ? 'bg-farmstay-accent w-6' : 'bg-farmstay-bg/50 hover:bg-farmstay-bg'}`}
+  data-slide-to={index}
+  aria-label={`${t('carousel.indicator')} ${index + 1}`}></button>

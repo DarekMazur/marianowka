@@ -1,0 +1,30 @@
+---
+import ImageCarousel from '../../components/organisms/ImageCarousel.astro';
+
+const customSlides = [
+  {
+    image: 'https://picsum.photos/id/10/1200/600',
+    alt: 'Slide one',
+    caption: 'First slide caption',
+  },
+  {
+    image: 'https://picsum.photos/id/14/1200/600',
+    alt: 'Slide two',
+    caption: 'Second slide caption',
+  },
+  {
+    image: 'https://picsum.photos/id/29/1200/600',
+    alt: 'Slide three',
+    caption: 'Third slide caption',
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <title>Test Image Carousel</title>
+  </head>
+  <body class="p-8 max-w-5xl mx-auto">
+    <ImageCarousel slides={customSlides} autoplayInterval={0} lang="en" />
+  </body>
+</html>

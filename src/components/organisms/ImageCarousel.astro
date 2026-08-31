@@ -1,0 +1,62 @@
+---
+import CarouselButton from '../atoms/CarouselButton.astro';
+import CarouselSlide from '../molecules/CarouselSlide.astro';
+import CarouselControls from '../molecules/CarouselControls.astro';
+
+interface Slide {
+  image: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  slides?: Slide[];
+  autoplayInterval?: number;
+  class?: string;
+  lang?: 'pl' | 'en' | 'ru';
+}
+
+const {
+  slides = [
+    {
+      image: 'https://picsum.photos/id/10/1200/600',
+      alt: 'Poranny widok na otaczającą przyrodę',
+      caption: 'Sielskie poranki w otoczeniu natury',
+    },
+    {
+      image: 'https://picsum.photos/id/14/1200/600',
+      alt: 'Strefa wypoczynku na świeżym powietrzu',
+      caption: 'Przestrzeń do relaksu i wyciszenia',
+    },
+    {
+      image: 'https://picsum.photos/id/29/1200/600',
+      alt: 'Lokalne otoczenie i ścieżki spacerowe',
+      caption: 'Malownicze tereny spacerowe',
+    },
+  ],
+  autoplayInterval = 5000,
+  class: className = '',
+  lang = 'pl',
+} = Astro.props;
+---
+
+<div
+  class={`relative w-full overflow-hidden bg-farmstay-dark shadow-lg group ${className}`}
+  data-carousel
+  data-interval={autoplayInterval}
+>
+  <div class="relative h-72 sm:h-96 md:h-[450px] w-full overflow-hidden">
+    {slides.map((slide, index) => <CarouselSlide slide={slide} index={index} />)}
+  </div>
+
+  <CarouselButton direction="prev" lang={lang} />
+  <CarouselButton direction="next" lang={lang} />
+
+  <CarouselControls slidesCount={slides.length} lang={lang} />
+</div>
+
+<script>
+  import { carousel } from '../../lib/carousel.ts';
+
+  carousel();
+</script>

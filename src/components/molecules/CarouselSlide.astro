@@ -1,0 +1,32 @@
+---
+interface Props {
+  slide: {
+    image: string;
+    alt: string;
+    caption?: string;
+  };
+  index: number;
+}
+
+const { slide, index } = Astro.props;
+const isActive = index === 0;
+---
+
+<div
+  class={`absolute inset-0 transition-opacity duration-700 ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+  data-slide
+>
+  <img
+    src={slide.image}
+    alt={slide.alt}
+    class="h-full w-full object-cover"
+    loading={isActive ? 'eager' : 'lazy'}
+  />
+  {
+    slide.caption && (
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-farmstay-dark/80 via-farmstay-dark/40 to-transparent p-6 text-farmstay-bg">
+        <p class="text-lg font-medium drop-shadow-sm">{slide.caption}</p>
+      </div>
+    )
+  }
+</div>

@@ -1,0 +1,27 @@
+---
+import CarouselIndicator from '../atoms/CarouselIndicator.astro';
+import CarouselToggle from '../atoms/CarouselToggle.astro';
+
+interface Props {
+  slidesCount: number;
+  lang?: 'pl' | 'en' | 'ru';
+}
+
+const { slidesCount, lang = 'pl' } = Astro.props;
+---
+
+<div
+  class="absolute bottom-4 right-4 z-20 flex items-center gap-3 rounded-full bg-farmstay-dark/60 px-4 py-2 backdrop-blur-sm"
+>
+  <div class="flex items-center gap-1.5" data-carousel-indicators>
+    {
+      Array.from({ length: slidesCount }).map((_, index) => (
+        <CarouselIndicator index={index} isActive={index === 0} lang={lang} />
+      ))
+    }
+  </div>
+
+  <div class="h-4 w-px bg-farmstay-bg/20"></div>
+
+  <CarouselToggle lang={lang} />
+</div>
