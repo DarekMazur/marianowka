@@ -4,9 +4,10 @@ import CarouselToggle from '../atoms/CarouselToggle.astro';
 
 interface Props {
   slidesCount: number;
+  lang?: 'pl' | 'en' | 'ru';
 }
 
-const { slidesCount } = Astro.props;
+const { slidesCount, lang = 'pl' } = Astro.props;
 ---
 
 <div
@@ -15,12 +16,12 @@ const { slidesCount } = Astro.props;
   <div class="flex items-center gap-1.5" data-carousel-indicators>
     {
       Array.from({ length: slidesCount }).map((_, index) => (
-        <CarouselIndicator index={index} isActive={index === 0} />
+        <CarouselIndicator index={index} isActive={index === 0} lang={lang} />
       ))
     }
   </div>
 
   <div class="h-4 w-px bg-farmstay-bg/20"></div>
 
-  <CarouselToggle />
+  <CarouselToggle lang={lang} />
 </div>

@@ -13,6 +13,7 @@ interface Props {
   slides?: Slide[];
   autoplayInterval?: number;
   class?: string;
+  lang?: 'pl' | 'en' | 'ru';
 }
 
 const {
@@ -35,6 +36,7 @@ const {
   ],
   autoplayInterval = 5000,
   class: className = '',
+  lang = 'pl',
 } = Astro.props;
 ---
 
@@ -47,10 +49,10 @@ const {
     {slides.map((slide, index) => <CarouselSlide slide={slide} index={index} />)}
   </div>
 
-  <CarouselButton direction="prev" />
-  <CarouselButton direction="next" />
+  <CarouselButton direction="prev" lang={lang} />
+  <CarouselButton direction="next" lang={lang} />
 
-  <CarouselControls slidesCount={slides.length} />
+  <CarouselControls slidesCount={slides.length} lang={lang} />
 </div>
 
 <script>

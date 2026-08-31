@@ -16,12 +16,13 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params;
 const currentLang = (lang || 'pl').substring(0, 2);
+const currentImages = homeSlides[lang] || homeSlides.pl;
 ---
 
 <Layout>
   <Header lang={currentLang} />
   <Hero lang={currentLang} />
-  <ImageCarousel slides={homeSlides} autoplayInterval={4000} />
+  <ImageCarousel slides={currentImages} autoplayInterval={4000} lang={currentLang} />
   <Rooms lang={currentLang} />
   <Features lang={currentLang} />
   <Contact lang={currentLang} />

@@ -1,8 +1,18 @@
+---
+import { useTranslations } from '../../i18n/utils';
+interface Props {
+  lang?: 'pl' | 'en' | 'ru';
+}
+
+const { lang = 'pl' } = Astro.props;
+const t = useTranslations(lang);
+---
+
 <button
   type="button"
   class="flex h-7 w-7 items-center justify-center text-farmstay-bg transition-colors hover:text-farmstay-accent focus:outline-none"
   data-carousel-toggle
-  aria-label="Wstrzymaj lub uruchom karuzelę"
+  aria-label={t('carousel.toggle')}
 >
   <svg class="h-4 w-4 pause-icon" fill="currentColor" viewBox="0 0 24 24">
     <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>

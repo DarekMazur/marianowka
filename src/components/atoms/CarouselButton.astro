@@ -1,10 +1,14 @@
 ---
+import { useTranslations } from '../../i18n/utils';
 interface Props {
   direction: 'prev' | 'next';
   class?: string;
+  lang?: 'pl' | 'en' | 'ru';
 }
 
-const { direction, class: className = '' } = Astro.props;
+const { direction, class: className = '', lang = 'pl' } = Astro.props;
+const t = useTranslations(lang);
+
 const isPrev = direction === 'prev';
 ---
 
@@ -12,7 +16,7 @@ const isPrev = direction === 'prev';
   type="button"
   class={`absolute top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-farmstay-dark/60 text-farmstay-bg backdrop-blur-sm transition-all hover:bg-farmstay-green focus:outline-none focus:ring-2 focus:ring-farmstay-accent opacity-0 group-hover:opacity-100 ${isPrev ? 'left-4' : 'right-4'} ${className}`}
   {...isPrev ? { 'data-carousel-prev': '' } : { 'data-carousel-next': '' }}
-  aria-label={isPrev ? 'Poprzedni slajd' : 'Następny slajd'}
+  aria-label={isPrev ? t('carousel.button.prev') : t('carousel.button.next')}
 >
   <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path
