@@ -5,7 +5,7 @@ export async function handler(event) {
 
   try {
     const response = await globalThis.fetch(
-      'https://auto.nerdistry.pl/webhook-test/0a9819d0-4928-44d7-b2fe-f36fceed4d44',
+      'https://auto.nerdistry.pl/webhook/0a9819d0-4928-44d7-b2fe-f36fceed4d44',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
