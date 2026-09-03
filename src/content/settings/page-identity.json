@@ -1,0 +1,23 @@
+{
+  "pl": {
+    "pageName": "Lorem Ipsum",
+    "title": "Serce Suwalskiego Parku Krajobrazowego",
+    "slogan": "Poczuj ciszę suwalskich jezior i lasów",
+    "subSlogan": "Komfortowe domki i pokoje otoczone nietkniętą przyrodą. Miejsce, где czas zwalnia swój bieg.",
+    "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&h=1080&q=80"
+  },
+  "en": {
+    "pageName": "",
+    "title": "",
+    "slogan": "",
+    "subSlogan": "",
+    "heroImage": ""
+  },
+  "ru": {
+    "pageName": "",
+    "title": "",
+    "slogan": "",
+    "subSlogan": "",
+    "heroImage": ""
+  }
+}

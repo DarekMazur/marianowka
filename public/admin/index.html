@@ -7,6 +7,72 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+<!-- Ładowanie Decap CMS -->
 <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+<script>
+	// Tworzymy niestandardowy komponent React dla przycisku tłumaczenia
+	var AITranslateButton = createClass({
+		handleTranslate: async function() {
+			// 1. Pobieramy aktualny stan całego formularza z Decap CMS
+			const entryData = this.props.entry.get('data').toJS();
+
+			if (!entryData.pl || !entryData.pl.title) {
+				alert("Wypełnij najpierw polską wersję językową!");
+				return;
+			}
+
+			// Pokaż informację o ładowaniu (np. zmień tekst przycisku)
+			const btn = document.getElementById('ai-translate-btn');
+			btn.innerText = "⏳ Tłumaczenie w toku...";
+			btn.disabled = true;
+
+			try {
+				// 2. Wysyłamy dane do Twojego webhooka n8n
+				const response = await fetch('https://TWOJ-N8N-INSTANCE.com/webhook/translate-content', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ pl: entryData.pl })
+				});
+
+				const result = await response.json();
+
+				if (result && result.en && result.ru) {
+					// 3. Wstrzykujemy przetłumaczone dane z powrotem do stanu formularza Decap CMS
+					// Aktualizujemy obiekt 'en' oraz 'ru'
+					this.props.onChange({
+						...entryData,
+						en: { ...entryData.en, ...result.en },
+						ru: { ...entryData.ru, ...result.ru }
+					});
+					alert("Tłumaczenie zakończone sukcesem! Sprawdź pola i kliknij Zapisz/Publish.");
+				} else {
+					alert("Błąd podczas otrzymywania tłumaczenia z n8n.");
+				}
+			} catch (error) {
+				console.error(error);
+				alert("Wystąpił błąd połączenia z n8n.");
+			} finally {
+				btn.innerText = "🌐 Przetłumacz automatycznie (AI)";
+				btn.disabled = false;
+			}
+		},
+
+		render: function() {
+			return h('div', { style: { marginBottom: '20px', padding: '15px', background: '#f0f4f8', borderRadius: '5px', border: '1px solid #cbd5e1' } },
+				h('p', { style: { margin: '0 0 10px 0', fontSize: '14px', color: '#334155' } }, 'Masz wypełnioną wersję polską? Kliknij poniżej, aby sztuczna inteligencja uzupełniła tłumaczenia.'),
+				h('button', {
+					id: 'ai-translate-btn',
+					type: 'button',
+					onClick: this.handleTranslate,
+					style: { background: '#2563eb', color: 'white', border: 'none', padding: '10px 16px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }
+				}, '🌐 Przetłumacz automatycznie (AI)')
+			);
+		}
+	});
+
+	// Rejestrujemy widget w Decap CMS
+	CMS.registerWidget('ai_translate_trigger', AITranslateButton);
+</script>
 </body>
 </html>

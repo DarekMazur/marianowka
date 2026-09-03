@@ -1,18 +1,47 @@
 backend:
   name: git-gateway
-  branch: admin-panel
+  branch: develop
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "pages"
-    label: "Strony"
+  - name: "site_content"
+    label: "Treści i Tłumaczenia"
     files:
-      - file: "src/content/pages/home.md" # Przykładowa ścieżka do treści w Astro Content Collections
-        label: "Strona Główna"
-        name: "home"
+      - file: "src/content/settings/page-identity.json"
+        label: "Tożsamość Strony (i18n)"
+        name: "page_identity"
         fields:
-          - { label: "Tytuł", name: "title", widget: "string" }
-          - { label: "Opis", name: "description", widget: "text" }
-          - { label: "Treść", name: "body", widget: "markdown" }
+          - label: "Automatyczne Tłumaczenie"
+            name: "ai_helper"
+            widget: "ai_translate_trigger"
+          - label: "Polski (PL)"
+            name: "pl"
+            widget: "object"
+            fields:
+              - { label: "Nazwa Strony", name: "pageName", widget: "string" }
+              - { label: "Tytuł", name: "title", widget: "string" }
+              - { label: "Slogan", name: "slogan", widget: "string" }
+              - { label: "Podtytuł", name: "subSlogan", widget: "text" }
+              - { label: "Zdjęcie (Hero)", name: "heroImage", widget: "image" }
+
+          - label: "Angielski (EN)"
+            name: "en"
+            widget: "object"
+            fields:
+              - { label: "Page Name", name: "pageName", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Slogan", name: "slogan", widget: "string", required: false }
+              - { label: "Sub Slogan", name: "subSlogan", widget: "text", required: false }
+              - { label: "Hero Image", name: "heroImage", widget: "string", required: false }
+
+          - label: "Rosyjski (RU)"
+            name: "ru"
+            widget: "object"
+            fields:
+              - { label: "Название", name: "pageName", widget: "string", required: false }
+              - { label: "Заголовок", name: "title", widget: "string", required: false }
+              - { label: "Слоган", name: "slogan", widget: "string", required: false }
+              - { label: "Подзаголовок", name: "subSlogan", widget: "text", required: false }
+              - { label: "Изображение", name: "heroImage", widget: "string", required: false }
